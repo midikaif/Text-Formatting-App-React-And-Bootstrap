@@ -1,15 +1,21 @@
-import logo from './logo.svg';
 import './App.css';
 import Navbar from './components/Navbar';
 import TextForm from './components/TextForm';
 import About from './components/About';
 import React, { useState } from 'react';
 import Alert from './components/Alert';
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  Link
+} from "react-router-dom";
+
 
 function App() {
   const [mode, setMode] = useState('info');
   const [alert, setAlert] = useState(null);
-  
+
   function toggleMode() {
     console.log('clicked')
     if (mode === 'info') {
@@ -24,7 +30,7 @@ function App() {
       changeAlert('success', 'Switched to Light Mode')
     }
   }
-  
+
   function changeAlert(res, msg) {
     setAlert({
       res: res,
@@ -37,10 +43,18 @@ function App() {
 
   return (
     <div>
-      <Navbar title='Text Utilities' toggleMode={toggleMode} mode={mode} />
-      <Alert alert={alert}/>
-      <TextForm heading='Enter Your Text To Format' mode={mode} alert={changeAlert} />
-      {/* <About /> */}
+      <BrowserRouter>
+          <Navbar title='Text Utilities' toggleMode={toggleMode} mode={mode} />
+          <Alert alert={alert} />
+        <Routes>
+          <Route path="/about" element={<About />}>
+          </Route>
+          <Route path="/" element={<TextForm heading="Enter text to analyze" mode={mode} alert={changeAlert} />}>
+          </Route>
+        </Routes>
+      </BrowserRouter>
+      {/* <TextForm heading='Enter Your Text To Format' mode={mode} alert={changeAlert} />
+      <About /> */}
     </div>
   );
 }
