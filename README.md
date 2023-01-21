@@ -2,9 +2,8 @@
 
 This app will help you to complete the needs of formating the text like removing spaces, changing it to upper case or vice virsa, copying the text and soon I'll add more new features. 
 
-## First Page
-![Getting Started](src%5Cimages%5Cfirst.PNG)
-![](c:%5CUsers%5CHP%5CDesktop%5Cfirst.PNG)
+## First Look
+![Firsl Look](./src/images/first.PNG)
 
 ### `npm start`
 
