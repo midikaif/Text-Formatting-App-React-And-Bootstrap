@@ -6,11 +6,12 @@ export default function TextForm(props) {
     
     function convertUpper() {
         setText(text.toUpperCase())
-
+        props.alert('success', 'Converted to Upper Case!!')
     }
 
     function convertLower() {
         setText(text.toLowerCase());
+        props.alert('success', 'Converted to Lower Case!!')
     }
     function handleChange(e) {
         setText(e.target.value)
@@ -18,25 +19,28 @@ export default function TextForm(props) {
 
     function clearText() {
         setText('');
+        props.alert('success', 'Text Cleared!!')
     }
 
     function copyText() {
-        navigator.clipboard.writeText(text)
+        navigator.clipboard.writeText(text);
+        props.alert('success', 'Copied to Clipboard');
     }
 
     function handleExtraSpaces() {
         let newText = text.split(/[ ]+/);
         setText(newText.join(' '));
+        props.alert('success', 'Extra spaces removed!!');
     }
 
     return (
         <div className="container my-3 ">
             <label htmlFor="box" className='h1 my-3'>{props.heading}</label>
-            <textarea className="form-control my-3 border border-2 border-info" value={text} onChange={handleChange} id="box" placeholder='Type here!!' rows="9"></textarea>
-            <button className={`mx-1 btn btn-${props.mode}`} onClick={convertUpper}>Convert To UpperCase</button>    
-            <button className={`mx-1 btn btn-${props.mode}`} onClick={convertLower}>Convert To LowerCase</button>    
-            <button className={`mx-1 btn btn-${props.mode}`} onClick={copyText}>Copy Text</button>    
+            <textarea className={`form-control my-3 border border-2 border-${props.mode}`} value={text} onChange={handleChange} id="box" placeholder='Type here!!' rows="9"></textarea>
+            <button className={`mx-1 btn btn-${props.mode}`} onClick={convertUpper}>Convert To Upper Case</button>    
+            <button className={`mx-1 btn btn-${props.mode}`} onClick={convertLower}>Convert To Lower Case</button>    
             <button className={`mx-1 btn btn-${props.mode}`} onClick={handleExtraSpaces}>Remove extra spaces</button>    
+            <button className={`mx-1 btn btn-${props.mode}`} onClick={copyText}>Copy Text</button>    
             <button className={`mx-1 btn btn-${props.mode}`} onClick={clearText}>Clear Text</button>    
             <div className='my-1'>
                 <h3 className='my-3'>Summary:</h3>
