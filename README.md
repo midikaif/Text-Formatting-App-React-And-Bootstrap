@@ -1,10 +1,10 @@
-# Getting Started with Create React App
+# Text-Formating-App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This app will help you to complete the needs of formating the text like removing spaces, changing it to upper case or vice virsa, copying the text and soon I'll add more new features. 
 
-## Available Scripts
+## First Page
 
-In the project directory, you can run:
+![](c:%5CUsers%5CHP%5CDesktop%5Cfirst.PNG)
 
 ### `npm start`
 
