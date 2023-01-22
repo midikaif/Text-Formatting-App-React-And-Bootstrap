@@ -35,7 +35,7 @@ function App() {
 
   return (
     <div>
-      <Navbar title='Text Utilities' toggleMode={toggleMode} mode={mode} />
+      <Navbar title='Text Formatter' toggleMode={toggleMode} mode={mode} />
       <Alert alert={alert} />
       <TextForm heading='Enter Your Text To Format' mode={mode} alert={changeAlert} />
     </div>
