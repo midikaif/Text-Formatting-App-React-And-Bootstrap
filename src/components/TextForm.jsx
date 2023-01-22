@@ -68,7 +68,7 @@ export default function TextForm(props) {
                 <h2 className='my-3 pb-3'>Summary:</h2>
                 <div className={`p-3 border border-2 border-${props.mode} rounded-pill text-center fs-3`}>
                     <p>{text.split(/\s+/).filter((el) => el.length !== 0).length} {text.split(/\s+/).length > 1 ? 'Words' : 'Word'} and {text.length} Characters</p>
-                    <p>{.008 * text.split(/\s+/).filter((el) => el.length !== 0).length} Minutes read</p>
+                    <p>{Math.floor(.008 * text.split(/\s+/).filter((el) => el.length !== 0).length).toFixed(2)} Minutes read</p>
                 </div>
             </div>
             <div className="my-2">
