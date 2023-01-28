@@ -4,6 +4,15 @@ import React, { useState } from 'react'
 export default function TextForm(props) {
     const [text, setText] = useState('')
 
+    function speak() {
+        if ('speechSynthesis' in window) {
+            let utter = new SpeechSynthesisUtterance(text);
+            speechSynthesis.speak(utter);
+        } else {
+            props.alert('warning', "Your browser dont support Text-To-Speech!!")
+        }
+    }
+
     function convertUpper() {
         setText(text.toUpperCase())
         if (text.length)
@@ -63,8 +72,8 @@ export default function TextForm(props) {
             <button className={`mx-1 my-1 btn btn-${props.mode}`} onClick={handleExtraSpaces}>Remove extra spaces</button>
             <button className={`mx-1 my-1 btn btn-${props.mode}`} onClick={copyText}>Copy Text</button>
             <button className={`mx-1 my-1 btn btn-${props.mode}`} onClick={clearText}>Clear Text</button>
+            <button className={`mx-1 my-1 btn btn-warning`} onClick={speak}>Text-To-Speech</button>
             <div className='my-1'>
-
                 <h2 className='my-3 pb-3'>Summary:</h2>
                 <div className={`p-3 border border-2 border-${props.mode} rounded-pill text-center fs-3`}>
                     <p>{text.split(/\s+/).filter((el) => el.length !== 0).length} {text.split(/\s+/).length > 1 ? 'Words' : 'Word'} and {text.length} Characters</p>
